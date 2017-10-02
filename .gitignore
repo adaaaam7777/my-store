@@ -3,40 +3,48 @@
 # compiled output
 /dist
 /tmp
-/out-tsc
 
 # dependencies
 /node_modules
+/bower_components
 
 # IDEs and editors
 /.idea
+*.iml
+/.vscode
 .project
 .classpath
-.c9/
 *.launch
 .settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # misc
 /.sass-cache
 /connect.lock
-/coverage
+/coverage/*
+/target/coverage/*
 /libpeerconnection.log
 npm-debug.log
 testem.log
 /typings
+phantomjsdriver.log
+yarn-error.log
 
 # e2e
-/e2e/*.js
+/e2e/src/*.js
 /e2e/*.map
+/target/e2e/reports/*.html
+/target/e2e/reports/*.json
 
-# System Files
+# e2e allow
+!/e2e/protractor.conf.js
+
+# version
+/src/version.json
+
+#System Files
 .DS_Store
 Thumbs.db
+debug.log
+
+#coverage
+/src/coverage
