@@ -94,8 +94,6 @@
       "check-type"
     ],
     "space-in-parens": [ "error", "always" ],
-    "directive-selector": [ true, "attribute", "ams", "camelCase" ],
-    "component-selector": [ true, "element", "ams", "kebab-case" ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
