@@ -1,0 +1,24 @@
+<span class="ar-paginator">
+	<span *ngIf="firstAndLastButtonVisible" class="ar-paginator-button first-button" [ngClass]=" { disabled: isFirstButtonDisabled }"
+		  (click)="onFirst()">
+		<i class="fa fa-angle-double-left" aria-hidden="true"></i>
+	</span>
+	<span *ngIf="prevAndNextButtonVisible" class="ar-paginator-button prev-button" [ngClass]=" { disabled: isPrevButtonDisabled }"
+		  (click)="onPrevious()">
+		<i class="fa fa-angle-left" aria-hidden="true"></i>
+	</span>
+
+	<div class="ar-paginator-button" *ngFor="let pageNumber of pageRange" [ngClass]="{ selected: pageNumber === actualPage }"
+		  (click)="onNumberClick( pageNumber )"  >
+		{{ pageNumber + 1 }}
+	</div>
+
+	<span *ngIf="prevAndNextButtonVisible" class="ar-paginator-button next-button" [ngClass]=" { disabled: isNextButtonDisabled }"
+		  (click)="onNext()">
+		<i class="fa fa-angle-right" aria-hidden="true"></i>
+	</span>
+	<span *ngIf="firstAndLastButtonVisible" class="ar-paginator-button last-button" [ngClass]=" { disabled: isLastButtonDisabled }"
+		  (click)="onLast()">
+		<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+	</span>
+</span>

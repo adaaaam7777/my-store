@@ -9,12 +9,18 @@ import { FreelancerGridComponent } from './components/freelancer-grid/freelancer
 import { FilterComponent } from './components/filter/filter.component';
 import { reducers } from './reducers/index';
 import { RealtimeFreelancersService } from './components/services/freelancer.service';
+import {ListComponent} from './components/shared/list/list.component';
+import {PageableListComponent} from './components/shared/pageable-list/pageable-list.component';
+import {PaginatorComponent} from './components/shared/paginator/paginator.component';
 
 @NgModule( {
 	declarations: [
 		AppComponent,
 		FreelancerGridComponent,
-		FilterComponent
+		FilterComponent,
+		ListComponent,
+		PageableListComponent,
+		PaginatorComponent
 	],
 	imports: [
 		BrowserModule,

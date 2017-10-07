@@ -14,7 +14,7 @@ export interface IFreelancer {
 }
 
 export interface FreelancerActionPayload {
-	freelancer: IFreelancer;
+	freelancer: IFreelancer[];
 	ADD: IFreelancer;
 	DELETE: number[];
 }
@@ -49,15 +49,16 @@ export function freelancersReducer( state: Array<IFreelancer> = [], action: Free
 	switch ( action.type ) {
 		case FREELANCER_ACTIONS.INCOMMING_DATA:
 			action.payload.DELETE.forEach( ( index ) => {
-				state.splice( state.indexOf( action.payload.freelancer ), 1 );
+				state.splice( state.indexOf( action.payload.freelancer[ 0 ] ), 1 );
 			} );
 			return Array.prototype.concat( action.payload.ADD, state );
 		case FREELANCER_ACTIONS.FREELANCERS_LOADED:
+			console.log( 'so its loaded' , action.payload.freelancer.concat( action.payload.freelancer ) );
 			// Return the new state with the payload as freelancers list
-			return Array.prototype.concat( action.payload.freelancer );
+			return action.payload.freelancer.concat( action.payload.freelancer );
 		case FREELANCER_ACTIONS.DELETE_FREELANCER:
 			// Remove the element from the array
-			state.splice( state.indexOf( action.payload.freelancer ), 1 );
+			state.splice( state.indexOf( action.payload.freelancer[ 0 ] ), 1 );
 			// We need to create another reference
 			return Array.prototype.concat( state );
 		default:

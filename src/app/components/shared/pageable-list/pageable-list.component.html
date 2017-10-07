@@ -1,0 +1,31 @@
+<div class="ar-pageable-list">
+	<ar-list [items]="items"
+			 [listItemTemplateRef]="listItemTemplateRef"
+			 [selectable]="selectable"
+			 [selected]="selected"
+			 (click)="click.emit( $event )"
+			 (selectionChanged)=" selectionChanged.emit( $event ) ">
+	</ar-list>
+
+	<div class="bottom-controls">
+		<ar-paginator [actualPage]="actualPage"
+					  [totalPage]="totalPage"
+					  [firstAndLastButtonVisible]="firstAndLastButtonVisible"
+					  [prevAndNextButtonVisible]="prevAndNextButtonVisible"
+					  [pageRangeWidth]="pageRangeWidth"
+					  (pageChanged)="pageChanged.emit( $event )">
+		</ar-paginator>
+
+		<span *ngIf="totalItems !== undefined">
+			Total items: {{ totalItems }}
+		</span>
+
+		<span>
+			<label> Items per page:</label>
+			<select [ngModel]="itemsPerPage"
+					(ngModelChange)="onItemsPerPageChanged( $event )">
+				<option *ngFor="let pageSize of pageSizes" [value]="pageSize">{{pageSize}}</option>
+			</select>
+		</span>
+	</div>
+</div>

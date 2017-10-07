@@ -1,0 +1,12 @@
+.ar-pageable-list {
+
+	.bottom-controls {
+		display: flex;
+		align-items: center;
+		margin: 10px 20px;
+
+		& > * {
+			margin-right: 10px;
+		}
+	}
+}

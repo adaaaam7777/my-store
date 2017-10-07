@@ -1,0 +1,18 @@
+.ar-paginator {
+	user-select: none;
+	display: flex;
+
+
+	.ar-paginator-button {
+		padding: 2px 4px;
+		cursor: pointer;
+
+		&.selected {
+			font-weight: bold;
+		}
+
+		&.disabled {
+			cursor: default;
+		}
+	}
+}

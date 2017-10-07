@@ -1,0 +1,11 @@
+<div class="ar-list">
+	<div class="ar-list-item" *ngFor="let item of items"(click)="onClick( item )" [ngClass]="{ selected: isSelected( item )}">
+		<ng-template *ngTemplateOutlet="listItemTemplateRef || defaultTpl; context: { $implicit: item, isSelected: isSelected( item ) }"></ng-template>
+	</div>
+	<div class="ar-list-empty-placeholder" *ngIf="items?.length === 0">
+		<i class="fa fa-info-circle" aria-hidden="true"></i>
+		{{ emptyPlaceholder }}
+	</div>
+</div>
+
+<ng-template #defaultTpl let-item>{{ item }}</ng-template>

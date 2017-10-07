@@ -6,15 +6,15 @@ import { FREELANCER_ACTIONS, AppState, IFreelancer } from '../../reducers/freela
 @Injectable()
 export class RealtimeFreelancersService {
 
-	private USER_API_URL = 'https://randomuser.me/api/?results=';
+	private USER_API_URL = 'https://swapi.co/api/people';
 
 	constructor( private store: Store<AppState>, private http: Http ) { }
 
 	private toFreelancer( value: any ) {
 		return {
-			name: value.name.first + ' ' + value.name.last,
-			email: value.email,
-			thumbail: value.picture.large,
+				name: value.name,
+				email: value.height,
+				thumbnail: value.url
 		};
 	}
 
@@ -23,39 +23,14 @@ export class RealtimeFreelancersService {
 	}
 
 	public run() {
-		console.log( 'service running' );
-		this.http.get( `${this.USER_API_URL}51` ).subscribe( ( response ) => {
+		this.http.get( `${this.USER_API_URL}` ).subscribe( ( response ) => {
+			console.log( 'woo: ', response.json().results );
 			this.store.dispatch( {
 				type: FREELANCER_ACTIONS.FREELANCERS_LOADED,
-				payload: response.json().results.map( this.toFreelancer )
+				payload: {
+					freelancer: response.json().results.map( this.toFreelancer )
+				}
 			} );
 		} );
-
-		setInterval( () => {
-			this.store.select( 'freelancers' ).first().subscribe( ( freelancers: Array<IFreelancer> ) => {
-				let getDeletedIndex = () => {
-					return this.random( freelancers.length - 1 );
-				};
-				this.http.get( `${this.USER_API_URL}${this.random( 10 )}` ).subscribe( ( response ) => {
-					this.store.dispatch( {
-						type: FREELANCER_ACTIONS.INCOMMING_DATA,
-						payload: {
-							ADD: response.json().results.map( this.toFreelancer ),
-							DELETE: new Array( this.random( 6 ) ).fill( 0 ).map( () => getDeletedIndex() ),
-						}
-					} );
-					this.addFadeClassToNewElements();
-				} );
-			} );
-		}, 10000 );
-	}
-
-	private addFadeClassToNewElements() {
-		let elements = window.document.getElementsByClassName( 'freelancer' );
-		for ( let i = 0; i < elements.length; i++ ) {
-			if ( elements.item( i ).className.indexOf( 'fade' ) === -1 ) {
-				elements.item( i ).classList.add( 'fade' );
-			}
-		}
 	}
 }

@@ -1,0 +1,61 @@
+.ar-ex-pageable-list {
+	user-select: none;
+}
+
+/deep/ .ar-pageable-list {
+	border: 1px #888 solid;
+	background-color: white;
+	box-shadow: 2px 2px 2px #888;
+}
+.ar-list .emptyStock{
+	color: #be0000;
+	font-weight: bold;
+}
+
+.ar-list-item :not(:last-child){
+	border-bottom: 1px #888 solid;
+}
+
+.ar-list-item {
+	padding: 5px 10px;
+	background-color: white;
+	box-shadow: 2px 2px 2px #888;
+	cursor: pointer;
+}
+
+.ar-list .selected {
+	font-weight: bold;
+	background: #fffacb;
+}
+
+.ar-list .ar-list-item-opened {
+	padding: 5px 10px;
+	background-color: rgba(255, 255, 255, 0.7);
+	font-weight: normal;
+	border: 1px solid #ccc;
+	margin: 5px 0;
+}
+
+.ar-list .ar-list-empty-placeholder {
+	color: #888;
+}
+
+/deep/ .ar-paginator-button {
+		border: 1px solid #aaa;
+		border-radius: 3px;
+		margin: 0 2px;
+		background-color: #eee;
+}
+.ar-paginator-button .selected {
+	background-color: #2c81f1;
+	color: #eee;
+ }
+
+.ar-paginator-button .disabled {
+	color: #aaa;
+}
+
+
+
+
+
