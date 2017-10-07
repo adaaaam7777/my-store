@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Http } from '@angular/http';
-import { ACTIONS, AppState, IFreelancer } from '../../reducers/freelancers.reducer';
+import { FREELANCER_ACTIONS, AppState, IFreelancer } from '../../reducers/freelancers.reducer';
 
 @Injectable()
 export class RealtimeFreelancersService {
@@ -23,9 +23,10 @@ export class RealtimeFreelancersService {
 	}
 
 	public run() {
+		console.log( 'service running' );
 		this.http.get( `${this.USER_API_URL}51` ).subscribe( ( response ) => {
 			this.store.dispatch( {
-				type: ACTIONS.FREELANCERS_LOADED,
+				type: FREELANCER_ACTIONS.FREELANCERS_LOADED,
 				payload: response.json().results.map( this.toFreelancer )
 			} );
 		} );
@@ -37,7 +38,7 @@ export class RealtimeFreelancersService {
 				};
 				this.http.get( `${this.USER_API_URL}${this.random( 10 )}` ).subscribe( ( response ) => {
 					this.store.dispatch( {
-						type: ACTIONS.INCOMMING_DATA,
+						type: FREELANCER_ACTIONS.INCOMMING_DATA,
 						payload: {
 							ADD: response.json().results.map( this.toFreelancer ),
 							DELETE: new Array( this.random( 6 ) ).fill( 0 ).map( () => getDeletedIndex() ),
