@@ -2,11 +2,6 @@ import { Action } from '@ngrx/store';
 
 import {IFilter} from './filter.reducer';
 
-export interface AppState {
-	coins: Array<Coin>;
-	filter: IFilter;
-}
-
 export interface Coin {
 	name: string;
 	rank: string;

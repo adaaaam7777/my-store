@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Http } from '@angular/http';
-import { COIN_ACTIONS, AppState } from '../../reducers/coins.reducer';
+import { COIN_ACTIONS } from '../../reducers/coins.reducer';
+import { AppState } from '../../reducers/index';
 
 @Injectable()
 export class RealtimeCoinsService {

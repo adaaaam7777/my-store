@@ -1,4 +1,9 @@
 <div class="cc-the-page cc-background-color">
+	<cc-header [user]="user$ | async"
+			   (login)="onLogin()"
+			   (logout)="onLogout()"
+			   (register)="onRegister()">
+	</cc-header>
 	<div class="cc-title">
 		{{title}}
 	</div>
@@ -8,7 +13,7 @@
 				<app-coin-grid></app-coin-grid>
 			</div>
 			<div class="cc-side-area-chat hidden-xs hidden-sm col-md-4 col-lg-4">
-				ergbdrsgf
+				<app-chatwindow></app-chatwindow>
 			</div>
 		</div>
 	</div>

@@ -2,9 +2,10 @@ import { Store } from '@ngrx/store';
 import { OnInit, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Coin, AppState, COIN_ACTIONS } from '../../reducers/coins.reducer';
+import { Coin, COIN_ACTIONS } from '../../reducers/coins.reducer';
 import { IFilter } from '../../reducers/filter.reducer';
 import { RealtimeCoinsService } from '../services/coin.service';
+import { AppState } from '../../reducers/index';
 
 @Component( {
 	selector: 'app-coin-grid',
