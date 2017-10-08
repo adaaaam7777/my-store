@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FreelancerGridComponent } from './freelancer-grid.component';
+import { CoinGridComponent } from './coin-grid.component';
 
-describe('FreelancerGridComponent', () => {
-  let component: FreelancerGridComponent;
-  let fixture: ComponentFixture<FreelancerGridComponent>;
+describe('CoinGridComponent', () => {
+  let component: CoinGridComponent;
+  let fixture: ComponentFixture<CoinGridComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FreelancerGridComponent ]
+      declarations: [ CoinGridComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FreelancerGridComponent);
+    fixture = TestBed.createComponent( CoinGridComponent );
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

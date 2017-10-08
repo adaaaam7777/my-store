@@ -1,14 +1,14 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import {filterReducer, IFilter} from './filter.reducer';
-import {freelancersReducer, IFreelancer} from './freelancers.reducer';
+import { filterReducer, IFilter } from './filter.reducer';
+import { coinsReducer, Coin } from './coins.reducer';
 
 export interface State {
 	filter: IFilter;
-	freelancers: Array<IFreelancer>;
+	coins: Array<Coin>;
 }
 
 export const reducers: ActionReducerMap< State > = {
 	filter: filterReducer,
-	freelancers: freelancersReducer
+	coins: coinsReducer
 };

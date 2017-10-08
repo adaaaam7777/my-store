@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Http } from '@angular/http';
-import { FREELANCER_ACTIONS, AppState, IFreelancer } from '../../reducers/freelancers.reducer';
+import { COIN_ACTIONS, AppState } from '../../reducers/coins.reducer';
 
 @Injectable()
-export class RealtimeFreelancersService {
+export class RealtimeCoinsService {
 
 	private USER_API_URL = 'https://swapi.co/api/people';
+	private CMC_URL = 'https://api.coinmarketcap.com/v1/ticker/';
 
 	constructor( private store: Store<AppState>, private http: Http ) { }
 
-	private toFreelancer( value: any ) {
+	private toCoin( value: any ) {
 		return {
 				name: value.name,
-				email: value.height,
+				rank: value.rank,
 				thumbnail: value.url
 		};
 	}
@@ -23,12 +24,12 @@ export class RealtimeFreelancersService {
 	}
 
 	public run() {
-		this.http.get( `${this.USER_API_URL}` ).subscribe( ( response ) => {
+		this.http.get( `${this.CMC_URL}` ).subscribe( ( response ) => {
 			console.log( 'woo: ', response.json().results );
 			this.store.dispatch( {
-				type: FREELANCER_ACTIONS.FREELANCERS_LOADED,
+				type: COIN_ACTIONS.COINS_LOADED,
 				payload: {
-					freelancer: response.json().results.map( this.toFreelancer )
+					coin: response.json().map( this.toCoin )
 				}
 			} );
 		} );

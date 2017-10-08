@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 
 export interface IFilter {
 	name: string;
-	email: string;
+	rank: string;
 }
 
 export const FILTER_ACTIONS = {
@@ -24,7 +24,7 @@ class ClearFilterAction implements Action {
 	constructor( public payload: IFilter ) {}
 }
 
-const initialState = { name: '', email: '' };
+const initialState = { name: '', rank: '' };
 
 export function filterReducer( state: IFilter = initialState, action: FilterActions ): IFilter {
 	switch ( action.type ) {

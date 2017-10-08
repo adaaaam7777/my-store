@@ -13,13 +13,13 @@ import {Observable} from 'rxjs';
 export class FilterComponent implements OnInit {
 
 	public name = new FormControl();
-	public email = new FormControl();
+	public rank = new FormControl();
 	constructor( private store: Store<any> ) {
 		store.select( 'filter' ).subscribe( ( filter: IFilter ) => {
 			this.name.setValue( filter.name );
-			this.email.setValue( filter.email );
+			this.rank.setValue( filter.rank );
 		} );
-		Observable.merge( this.name.valueChanges, this.email.valueChanges ).debounceTime( 1000 ).subscribe( () => this.filter() );
+		Observable.merge( this.name.valueChanges, this.rank.valueChanges ).debounceTime( 1000 ).subscribe( () => this.filter() );
 	}
 
 	ngOnInit() {
@@ -30,7 +30,7 @@ export class FilterComponent implements OnInit {
 			type: FILTER_ACTIONS.UPDATE_FILTER,
 			payload: {
 				name: this.name.value,
-				email: this.email.value,
+				rank: this.rank.value,
 			}
 		} );
 	}
