@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { IFreelancer, AppState, FREELANCER_ACTIONS } from '../../reducers/freelancers.reducer';
 import { IFilter } from '../../reducers/filter.reducer';
-import {RealtimeFreelancersService} from '../services/freelancer.service';
+import { RealtimeFreelancersService } from '../services/freelancer.service';
 
 @Component( {
 	selector: 'app-freelancer-grid',
@@ -25,7 +25,8 @@ export class FreelancerGridComponent implements OnInit {
 		private store: Store<AppState>,
 		private freelancersService: RealtimeFreelancersService
 	) {
-		this.freelancers = Observable.combineLatest( store.select( 'freelancers' ), store.select( 'filter' ), this.applyFilter );
+		this.freelancers = Observable.combineLatest(store.select('freelancers'), store.select('filter'), this.applyFilter);
+		this.onItemsPerPageChanged( 10 );
 	}
 
 	applyFilter( freelancers: Array<IFreelancer>, filter: IFilter ): Array<IFreelancer> {
