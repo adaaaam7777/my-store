@@ -1,0 +1,5 @@
+<div class="cc-header">
+	<a *ngIf="user && !user.uid"(click)="onLogin()" class="btn btn-default">Log In</a>
+	<a *ngIf="user && user.uid"(click)="onLogout()" class="btn btn-default">Log Out</a>
+	<span *ngIf="user && user.uid">{{ user.displayName }}</span>
+</div>
