@@ -1,12 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import {IFilter} from './filter.reducer';
-
-export interface Coin {
-	name: string;
-	rank: string;
-	thumbnail: string;
-}
+import { Coin } from '../interfaces/coin.interface';
 
 export interface CoinActionPayload {
 	coin: Coin[];

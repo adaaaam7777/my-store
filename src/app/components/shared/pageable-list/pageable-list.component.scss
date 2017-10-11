@@ -1,4 +1,16 @@
+span {
+	display: flex;
+	justify-content: center;
+}
+
 .ar-pageable-list {
+
+	.cc-table-header {
+		display: flex;
+		align-items: center;
+		padding-left: 20px;
+		height: 30px;
+	}
 
 	.bottom-controls {
 		display: flex;

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormControl } from '@angular/forms';
 
-import {IFilter, FILTER_ACTIONS} from '../../reducers/filter.reducer';
-import {Observable} from 'rxjs';
+import { IFilter, FILTER_ACTIONS } from '../../reducers/filter.reducer';
 
 @Component( {
 	selector: 'app-filter',
@@ -13,13 +12,11 @@ import {Observable} from 'rxjs';
 export class FilterComponent implements OnInit {
 
 	public name = new FormControl();
-	public rank = new FormControl();
 	constructor( private store: Store<any> ) {
 		store.select( 'filter' ).subscribe( ( filter: IFilter ) => {
 			this.name.setValue( filter.name );
-			this.rank.setValue( filter.rank );
 		} );
-		Observable.merge( this.name.valueChanges, this.rank.valueChanges ).debounceTime( 1000 ).subscribe( () => this.filter() );
+		this.name.valueChanges.debounceTime( 500 ).subscribe( () => this.filter() );
 	}
 
 	ngOnInit() {
@@ -29,8 +26,7 @@ export class FilterComponent implements OnInit {
 		this.store.dispatch( {
 			type: FILTER_ACTIONS.UPDATE_FILTER,
 			payload: {
-				name: this.name.value,
-				rank: this.rank.value,
+				name: this.name.value
 			}
 		} );
 	}

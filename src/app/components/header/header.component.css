@@ -30,8 +30,15 @@ a {
 	padding: 5px;
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
 }
 
 .cc-header .btn-default {
 	padding: 3px 6px;
 }
+
+.cc-display-name {
+	align-items: center;
+	padding:  0 10px;
+}
+

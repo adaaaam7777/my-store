@@ -25,9 +25,15 @@
 /*/deep/ .ar-list-item {
 	height: 40px;
 }*/
+span {
+	display: flex;
+	justify-content: center;
+}
 
-
-
+.cc-coin-container{
+	display: flex;
+	width: 100%;
+}
 
 
 .ar-ex-pageable-list {
@@ -51,7 +57,7 @@
 }
 
 /deep/ .ar-list-item {
-	padding: 5px 10px;
+	padding: 5px 20px;
     /*
 	background-color: white;
     */

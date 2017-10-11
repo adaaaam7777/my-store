@@ -2,10 +2,11 @@ import { Store } from '@ngrx/store';
 import { OnInit, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Coin, COIN_ACTIONS } from '../../reducers/coins.reducer';
+import { COIN_ACTIONS } from '../../reducers/coins.reducer';
 import { IFilter } from '../../reducers/filter.reducer';
 import { RealtimeCoinsService } from '../services/coin.service';
 import { AppState } from '../../reducers/index';
+import { Coin } from '../../interfaces/coin.interface';
 
 @Component( {
 	selector: 'app-coin-grid',
@@ -34,11 +35,9 @@ export class CoinGridComponent implements OnInit {
 		console.log( 'init: ', coins );
 		this.allItemsLength = coins.length;
 		let newCoins = coins
-			.filter( x => !filter.name || x.name.toLowerCase().indexOf( filter.name.toLowerCase() ) !== -1 )
-			.filter( x => !filter.rank || x.rank.toLowerCase().indexOf( filter.rank.toLowerCase() ) !== -1 );
+			.filter( x => !filter.name || x.name.toLowerCase().indexOf( filter.name.toLowerCase() ) !== -1 );
 		this.coinsShown = Observable.of( newCoins.slice( 0, 10 ) );
 		return newCoins;
-
 	}
 
 	ngOnInit(): void {
