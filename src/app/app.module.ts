@@ -13,7 +13,7 @@ import { RealtimeCoinsService } from './components/services/coin.service';
 import { ListComponent } from './components/shared/list/list.component';
 import { PageableListComponent } from './components/shared/pageable-list/pageable-list.component';
 import { PaginatorComponent } from './components/shared/paginator/paginator.component';
-import { ChatwindowComponent } from './components/chatwindow/chatwindow.component';
+import { ChatWindowComponent } from './components/chatwindow/chatwindow.component';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './components/services/auth.service';
@@ -38,7 +38,7 @@ let fireBaseConfig = {
 		ListComponent,
 		PageableListComponent,
 		PaginatorComponent,
-		ChatwindowComponent,
+		ChatWindowComponent,
 		HeaderComponent
 	],
 	imports: [

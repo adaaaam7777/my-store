@@ -1,3 +1,10 @@
-<p>
-  chatwindow works!
-</p>
+<div class="cc-chat-area">
+	<div class="chat-container" *ngFor="let item of items | async">
+		<a href="#">{{ item.name }}</a>
+
+		<p>{{ item.message }}</p>
+	</div>
+</div>
+
+<input class="cc-send-message-area" type="text" id="message" placeholder="Type here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
+

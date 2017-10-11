@@ -2,11 +2,19 @@
 	.cc-the-page {
 		padding-left: 50px;
 	}
+
+	.cc-side-area-chat {
+		height: 550px;
+	}
 }
 
 @media only screen and (max-width: 1200px) {
 	.cc-the-page {
 		padding-left: 50px;
+	}
+
+	.cc-side-area-chat {
+		height: 550px;
 	}
 }
 
@@ -14,11 +22,19 @@
 	.cc-the-page {
 		padding-left: 50px;
 	}
+
+	.cc-side-area-chat {
+		height: 500px;
+	}
 }
 
 @media only screen and (max-width: 768px) {
 	.cc-the-page {
 		padding-left: 50px;
+	}
+
+	.cc-side-area-chat {
+		height: 390px;
 	}
 }
 

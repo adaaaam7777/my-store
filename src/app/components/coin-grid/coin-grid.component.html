@@ -13,13 +13,13 @@
 
 	<ng-template #itemTpl let-item let-isSelected="isSelected">
 		<div class="cc-coin-container" [attr.title]="isSelected ? 'click to close' : 'click to open' ">
-			<span style="min-width: 4%">{{ item.rank }}</span>
-			<span style="min-width: 12%">{{ item.name }}</span>
-			<span style="min-width: 4%">{{ item.symbol }}</span>
-			<span style="min-width: 12%">{{ item.market_cap_usd }}</span>
-			<span style="min-width: 6%">{{ item.price_usd }}</span>
-			<span style="min-width: 12%">{{ item.available_supply }}</span>
-			<span style="min-width: 12%">{{ item._24_h_volume_usd }}</span>
+			<span style="min-width: 5%">{{ item.rank }}</span>
+			<span style="min-width: 13%">{{ item.name }}</span>
+			<span style="min-width: 7%">{{ item.symbol }}</span>
+			<span style="min-width: 18%">{{ item.market_cap_usd }}</span>
+			<span style="min-width: 10%">{{ item.price_usd }}</span>
+			<span style="min-width: 18%">{{ item.available_supply }}</span>
+			<span style="min-width: 18%">{{ item._24_h_volume_usd }}</span>
 			<span style="min-width: 12%">{{ item.percent_change_1h }}</span>
 			<div class="ar-list-item-opened" *ngIf="isSelected">
 				<div class="emptyStock" *ngIf="true">Clickedddddd</div>

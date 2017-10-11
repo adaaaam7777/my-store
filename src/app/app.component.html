@@ -14,7 +14,7 @@
 				<app-coin-grid></app-coin-grid>
 			</div>
 			<div class="cc-side-area-chat hidden-xs hidden-sm col-md-4 col-lg-4">
-				<app-chatwindow></app-chatwindow>
+				<app-chatwindow [user]="user$ | async"></app-chatwindow>
 			</div>
 		</div>
 	</div>

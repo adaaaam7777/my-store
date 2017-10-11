@@ -13,7 +13,6 @@ export class RealtimeCoinsService {
 	constructor( private store: Store<AppState>, private http: Http ) { }
 
 	private toCoin( value: any ) {
-		console.log( 'tocoin:',value );
 		return {
 				name: value.name,
 				rank: value.rank,
@@ -34,7 +33,6 @@ export class RealtimeCoinsService {
 
 	public run() {
 		this.http.get( `${this.CMC_URL}` ).subscribe( ( response ) => {
-			console.log( 'woo: ', response.json() );
 			this.store.dispatch( {
 				type: COIN_ACTIONS.COINS_LOADED,
 				payload: {

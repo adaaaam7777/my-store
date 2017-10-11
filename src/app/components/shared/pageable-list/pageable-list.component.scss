@@ -1,3 +1,30 @@
+@media only screen and (min-width: 1201px) {
+	.cc-table-header {
+		height: 60px;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.cc-table-header {
+		height: 60px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.cc-table-header {
+		height: 50px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.cc-table-header {
+		height: 40px;
+	}
+}
+
+
+
+
 span {
 	display: flex;
 	justify-content: center;
@@ -8,8 +35,8 @@ span {
 	.cc-table-header {
 		display: flex;
 		align-items: center;
-		padding-left: 20px;
-		height: 30px;
+		padding: 0 20px;
+		border: 2px solid black;
 	}
 
 	.bottom-controls {

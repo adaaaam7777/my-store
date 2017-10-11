@@ -33,7 +33,6 @@ export const COIN_ACTIONS = {
 export type CoinActions = IncomingDataAction | CoinLoadAction | CoinDeleteAction;
 
 export function coinsReducer( state: Array<Coin> = [], action: CoinActions ): Array<Coin> {
-	console.log( 'sate: ', state );
 	console.log( 'action: ', action );
 	switch ( action.type ) {
 		case COIN_ACTIONS.INCOMMING_DATA:
@@ -42,7 +41,6 @@ export function coinsReducer( state: Array<Coin> = [], action: CoinActions ): Ar
 			} );
 			return Array.prototype.concat( action.payload.ADD, state );
 		case COIN_ACTIONS.COINS_LOADED:
-			console.log( 'so its loaded' , action.payload.coin.concat( action.payload.coin ) );
 			// Return the new state with the payload as coins list
 			return action.payload.coin.concat( action.payload.coin );
 		case COIN_ACTIONS.DELETE_COIN:
