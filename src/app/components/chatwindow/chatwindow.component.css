@@ -1,3 +1,13 @@
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 7px;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
 @media only screen and (min-width: 1201px) {
 	.cc-send-message-area {
 		height: 40px;
@@ -39,16 +49,22 @@
 }
 
 .cc-chat-area {
+	overflow-y: scroll;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+    /*
 	justify-content: flex-end;
+    */
 }
 
 .cc-send-message-area {
 	border-radius: 10%;
 	width: 90%;
 	margin: 5%;
+}
+
+.cc-send-message-area:last-child {
 }
 
 

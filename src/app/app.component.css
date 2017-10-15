@@ -6,6 +6,10 @@
 	.cc-side-area-chat {
 		height: 550px;
 	}
+
+	app-chatwindow {
+		height: 550px;
+	}
 }
 
 @media only screen and (max-width: 1200px) {
@@ -14,6 +18,10 @@
 	}
 
 	.cc-side-area-chat {
+		height: 550px;
+	}
+
+	app-chatwindow {
 		height: 550px;
 	}
 }
@@ -26,6 +34,10 @@
 	.cc-side-area-chat {
 		height: 500px;
 	}
+
+	app-chatwindow {
+		height: 500px;
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -34,6 +46,10 @@
 	}
 
 	.cc-side-area-chat {
+		height: 390px;
+	}
+
+	app-chatwindow {
 		height: 390px;
 	}
 }
@@ -49,6 +65,7 @@
 }
 .cc-side-area-chat {
 	background-color: white;
+	border: 1px solid black;
 }
 .cc-the-page {
 	display: flex;
@@ -61,7 +78,10 @@
 }
 
 /deep/ .cc-background-color {
+    /*
 	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    */
+	background: linear-gradient(-45deg, #efdad3, #dfc0cc, #b7ced6, #bcd7d1);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
