@@ -1,4 +1,5 @@
-<div class="ar-ex-pageable-list">
+<div class="ar-ex-pageable-list" appInfiniteScroller
+	 [scrollCallback]="scrollCallback">
 
 	<ar-pageable-list [items]="coinsShown | async"
 					  [listItemTemplateRef]="itemTpl"

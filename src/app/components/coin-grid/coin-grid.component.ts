@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { COIN_ACTIONS } from '../../reducers/coins.reducer';
@@ -15,6 +15,8 @@ import { Coin } from '../../interfaces/coin.interface';
 } )
 export class CoinGridComponent implements OnInit {
 
+	@Input() coinsPerPage = 20;
+
 	public coins: Observable<Coin[]>;
 	public filter: Observable<IFilter>;
 
@@ -23,12 +25,18 @@ export class CoinGridComponent implements OnInit {
 	allItemsLength = 0;
 	coinsShown = Observable.of( [] );
 
+	totalCoinsShown = this.coinsPerPage;
+
+	scrollCallback;
+
 	constructor(
 		private store: Store<AppState>,
 		private coinsService: RealtimeCoinsService
 	) {
 		this.coins = Observable.combineLatest( store.select( 'coins' ), store.select( 'filter' ), this.applyFilter );
-		this.onItemsPerPageChanged( 10 );
+		this.onItemsPerPageChanged( this.coinsPerPage );
+
+		this.scrollCallback = this.loadMoarCoins();
 	}
 
 	applyFilter( coins: Array<Coin>, filter: IFilter ): Array<Coin> {
@@ -36,7 +44,7 @@ export class CoinGridComponent implements OnInit {
 		this.allItemsLength = coins.length;
 		let newCoins = coins
 			.filter( x => !filter.name || x.name.toLowerCase().indexOf( filter.name.toLowerCase() ) !== -1 );
-		this.coinsShown = Observable.of( newCoins.slice( 0, 10 ) );
+		this.coinsShown = Observable.of( newCoins.slice( 0, 20 ) );
 		return newCoins;
 	}
 
@@ -66,6 +74,11 @@ export class CoinGridComponent implements OnInit {
 
 	get totalPages(): number {
 		return Math.ceil( this.allItemsLength / this.itemsPerPage );
+	}
+
+	loadMoarCoins() {
+		this.totalCoinsShown += this.coinsPerPage;
+		return this.onItemsPerPageChanged( this.totalCoinsShown );
 	}
 
 }

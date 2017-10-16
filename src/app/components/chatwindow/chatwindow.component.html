@@ -1,4 +1,4 @@
-<div class="cc-chat-area">
+<div class="cc-chat-area" (scroll)="onScroll($event)">
 	<div class="chat-container" *ngFor="let item of items | async">
 		<a href="#">{{ item.name }}</a>
 

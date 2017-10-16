@@ -48,7 +48,8 @@
 .cc-send-message-area {
 	border-radius: 10%;
 	width: 90%;
-	margin: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 

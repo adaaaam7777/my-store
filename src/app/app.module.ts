@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {Store, StoreModule} from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { CoinGridComponent } from './components/coin-grid/coin-grid.component';
@@ -17,9 +19,8 @@ import { ChatWindowComponent } from './components/chatwindow/chatwindow.componen
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthService } from './components/services/auth.service';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './effects/user.effects';
+import { InfiniteScrollerDirective } from './directives/infinite-scroll.directive';
 
 let fireBaseConfig = {
 	apiKey: 'AIzaSyBpLBMCMjMtErMTwwetpiyPSkfGgU1DRfs',
@@ -39,7 +40,8 @@ let fireBaseConfig = {
 		PageableListComponent,
 		PaginatorComponent,
 		ChatWindowComponent,
-		HeaderComponent
+		HeaderComponent,
+		InfiniteScrollerDirective
 	],
 	imports: [
 		BrowserModule,

@@ -38,6 +38,7 @@ span {
 
 .ar-ex-pageable-list {
 	user-select: none;
+	overflow: hidden;
 }
 
 /deep/ .ar-pageable-list {

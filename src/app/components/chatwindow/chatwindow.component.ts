@@ -32,4 +32,8 @@ export class ChatWindowComponent implements OnInit {
 		this.msgVal = '';
 	}
 
+	onScroll( event ) {
+		console.log( 'stopped propagation ' );
+	}
+
 }
