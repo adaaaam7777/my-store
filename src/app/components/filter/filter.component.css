@@ -7,3 +7,27 @@
 .paddingClass .btn-default {
 	padding: 3px 6px;
 }
+
+@media only screen and (min-width: 1201px) {
+	.paddingClass {
+		height:30px;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.paddingClass {
+		height:25px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.paddingClass {
+		height:20px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.paddingClass {
+		height:15px;
+	}
+}

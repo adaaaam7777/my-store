@@ -46,8 +46,4 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
 		} catch ( err ) { }
 	}
 
-	onScroll( event ) {
-		console.log( 'stopped propagation ' );
-	}
-
 }

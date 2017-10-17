@@ -6,20 +6,26 @@
 
 @media only screen and (max-width: 1200px) {
 /deep/.ar-list-item {
-		height: 70px;
-	}
+	height: 70px;
 }
 
+}
 @media only screen and (max-width: 992px) {
 /deep/.ar-list-item {
-		height: 60px;
-	}
+	height: 60px;
 }
 
+}
 @media only screen and (max-width: 768px) {
 /deep/ .ar-list-item {
-		height: 50px;
-	}
+	height: 50px;
+}
+
+}
+
+::-webkit-scrollbar {
+		display: none;
+
 }
 
 /*/deep/ .ar-list-item {
@@ -37,8 +43,8 @@ span {
 
 
 .ar-ex-pageable-list {
+	height: 100%;
 	user-select: none;
-	overflow: hidden;
 }
 
 /deep/ .ar-pageable-list {
@@ -102,9 +108,5 @@ span {
 
 .ar-paginator-button .disabled {
 	color: #aaa;
-}
 
-
-
-
-
+}/**/
