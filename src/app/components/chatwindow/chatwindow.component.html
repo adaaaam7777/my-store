@@ -1,8 +1,8 @@
 <div #scrollWindow class="cc-chat-area">
 	<div class="chat-container" *ngFor="let item of shownItems">
-		<a href="#">{{ item.name }}</a>
+		<a href="#" [ngStyle]="{ 'color': randomChatColor }">{{ item.name }}</a>
 
-		<p>{{ item.message }}</p>
+		<span>{{ item.message }}</span>
 	</div>
 </div>
 
