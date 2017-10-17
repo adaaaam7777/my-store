@@ -75,6 +75,7 @@
 	font-size: 40px;
 	margin: auto;
 	padding-bottom: 20px;
+	font-family: "Comic Sans MS", recursive, sans-serif;
 }
 
 /deep/ .cc-background-color {
