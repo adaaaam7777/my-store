@@ -20,6 +20,9 @@ import { AuthService } from './components/services/auth.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './effects/user.effects';
+import { AppRoutingModule } from './app-routing.module';
+import { OtherComponent } from './components/other/other.component';
+import { ExchangeApiService } from './components/services/exchange-api.service';
 
 let fireBaseConfig = {
 	apiKey: 'AIzaSyBpLBMCMjMtErMTwwetpiyPSkfGgU1DRfs',
@@ -39,7 +42,8 @@ let fireBaseConfig = {
 		PageableListComponent,
 		PaginatorComponent,
 		ChatWindowComponent,
-		HeaderComponent
+		HeaderComponent,
+		OtherComponent
 	],
 	imports: [
 		BrowserModule,
@@ -55,14 +59,16 @@ let fireBaseConfig = {
 			UserEffects
 		] ),
 		AngularFireModule.initializeApp( fireBaseConfig ),
-		AngularFireAuthModule
+		AngularFireAuthModule,
+		AppRoutingModule
 	],
 	providers: [
 		Store,
 		RealtimeCoinsService,
 		AngularFireAuth,
 		AuthService,
-		AngularFireDatabase
+		AngularFireDatabase,
+		ExchangeApiService
 	],
 	bootstrap: [ AppComponent ]
 } )

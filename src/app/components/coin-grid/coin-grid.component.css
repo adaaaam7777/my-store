@@ -30,6 +30,11 @@ span {
 	justify-content: center;
 }
 
+img {
+	margin-left: 5px;
+	align-self: center;
+}
+
 .cc-coin-container{
 	display: flex;
 	width: 100%;

@@ -7,7 +7,6 @@ import { AppState } from '../../reducers/index';
 @Injectable()
 export class RealtimeCoinsService {
 
-	private USER_API_URL = 'https://swapi.co/api/people';
 	private CMC_URL = 'https://api.coinmarketcap.com/v1/ticker/';
 
 	constructor( private store: Store<AppState>, private http: Http ) { }

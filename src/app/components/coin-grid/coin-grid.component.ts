@@ -7,6 +7,7 @@ import { IFilter } from '../../reducers/filter.reducer';
 import { RealtimeCoinsService } from '../services/coin.service';
 import { AppState } from '../../reducers/index';
 import { Coin } from '../../interfaces/coin.interface';
+import { Http } from '@angular/http';
 
 @Component( {
 	selector: 'app-coin-grid',
@@ -25,7 +26,8 @@ export class CoinGridComponent implements OnInit {
 
 	constructor(
 		private store: Store<AppState>,
-		private coinsService: RealtimeCoinsService
+		private coinsService: RealtimeCoinsService,
+		private http: Http
 	) {
 		this.coins = Observable.combineLatest( store.select( 'coins' ), store.select( 'filter' ), this.applyFilter );
 		this.onItemsPerPageChanged( 10 );
@@ -66,6 +68,11 @@ export class CoinGridComponent implements OnInit {
 
 	get totalPages(): number {
 		return Math.ceil( this.allItemsLength / this.itemsPerPage );
+	}
+
+	getCoinClass( name: string ): string {
+		let newName = name.toLowerCase().replace( ' ', '-' );
+		return `s-s-${ newName }`;
 	}
 
 }
