@@ -33,6 +33,7 @@ span {
 img {
 	margin-left: 5px;
 	align-self: center;
+	border: 0;
 }
 
 .cc-coin-container{

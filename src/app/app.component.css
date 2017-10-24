@@ -82,7 +82,10 @@
     /*
 	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
     */
+    /*
 	background: linear-gradient(-45deg, #efdad3, #dfc0cc, #b7ced6, #bcd7d1);
+    */
+	background: linear-gradient(-45deg, #eeeae8, #e1dedf, #d3d5d5, #d6d7d7);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
