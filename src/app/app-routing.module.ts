@@ -1,6 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { OtherComponent } from './components/other/other.component';
 import { CoinGridComponent } from './components/coin-grid/coin-grid.component';
 
 let routes: Routes = [
@@ -10,10 +9,10 @@ let routes: Routes = [
 		// pathMatch: 'full'
 		component: CoinGridComponent
 	},
-	{
+/*	{
 		path: 'other',
 		component: OtherComponent,
-/*		children: [
+/!*		children: [
 			{
 				path: '',
 				component: xxx
@@ -30,8 +29,8 @@ let routes: Routes = [
 				path: ':id/edit',
 				component: vsbds
 			}
-		]*/
-	}
+		]*!/
+	}*/
 ];
 
 @NgModule( {

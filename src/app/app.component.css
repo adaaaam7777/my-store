@@ -107,8 +107,7 @@ body {
 	padding: 0;
 }
 
-
-app-coin-grid {
+/deep/ app-coin-grid {
 	height: 100%;
 }
 .cc-main-area {

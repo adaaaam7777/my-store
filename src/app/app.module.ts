@@ -23,7 +23,6 @@ import { UserEffects } from './effects/user.effects';
 import { InfiniteScrollerDirective } from './directives/infinite-scroll.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { ExchangeApiService } from './components/services/exchange-api.service';
-import { OtherComponent } from './components/other/other.component';
 
 let fireBaseConfig = {
 	apiKey: 'AIzaSyBpLBMCMjMtErMTwwetpiyPSkfGgU1DRfs',
@@ -44,7 +43,6 @@ let fireBaseConfig = {
 		PaginatorComponent,
 		ChatWindowComponent,
 		HeaderComponent,
-		OtherComponent,
 		InfiniteScrollerDirective
 	],
 	imports: [
