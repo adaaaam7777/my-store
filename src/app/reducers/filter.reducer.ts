@@ -26,6 +26,7 @@ class ClearFilterAction implements Action {
 const initialState = { name: '' };
 
 export function filterReducer( state: IFilter = initialState, action: FilterActions ): IFilter {
+	console.log( 'filter action: ', action );
 	switch ( action.type ) {
 		case FILTER_ACTIONS.UPDATE_FILTER:
 			// Create a new state from payload

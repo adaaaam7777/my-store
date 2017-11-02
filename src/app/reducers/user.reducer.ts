@@ -6,6 +6,7 @@ const defaultUser = new User( null, 'GUEST' );
 
 /// Reducer function
 export function userReducer( state: User = defaultUser, action: Action ) {
+	console.log( 'user action', action );
 	switch ( action.type ) {
 		case userActions.GET_USER:
 			return { ...state, loading: true };

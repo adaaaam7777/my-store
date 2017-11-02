@@ -2,7 +2,6 @@ import { Store } from '@ngrx/store';
 import { OnInit, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { COIN_ACTIONS } from '../../reducers/coins.reducer';
 import { IFilter } from '../../reducers/filter.reducer';
 import { RealtimeCoinsService } from '../services/coin.service';
 import { AppState } from '../../reducers/index';
@@ -20,10 +19,8 @@ export class CoinGridComponent implements OnInit {
 	public coins: Observable<Coin[]>;
 	public filter: Observable<IFilter>;
 
-	pageNumber = 0;
-	itemsPerPage = 10;
-	allItemsLength = 0;
 	coinsShown = Observable.of( [] );
+	allCoins = Observable.of( [] );
 
 	totalCoinsShown = this.coinsPerPage;
 
@@ -33,52 +30,36 @@ export class CoinGridComponent implements OnInit {
 		private store: Store<AppState>,
 		private coinsService: RealtimeCoinsService
 	) {
-		this.coins = Observable.combineLatest( store.select( 'coins' ), store.select( 'filter' ), this.applyFilter );
-		this.onItemsPerPageChanged( this.coinsPerPage );
+		console.log( 'constructor' );
+		this.coins = Observable.combineLatest( store.select( 'coins' ).do( ( x ) => console.log( 'afdsfws', x ) ),
+			store.select( 'filter' ).do( ( x ) => console.log( 'aaaaa', x ) ).distinctUntilChanged(), this.applyFilter );
+		this.onCoinsChanged();
 
-		this.scrollCallback = this.loadMoarCoins();
+		this.scrollCallback = this.loadMoarCoins.bind( this );
 	}
 
 	applyFilter( coins: Array<Coin>, filter: IFilter ): Array<Coin> {
-		console.log( 'init: ', coins );
-		this.allItemsLength = coins.length;
-		let newCoins = coins
-			.filter( x => !filter.name || x.name.toLowerCase().indexOf( filter.name.toLowerCase() ) !== -1 );
-		this.coinsShown = Observable.of( newCoins.slice( 0, 20 ) );
-		return newCoins;
+		console.log( 'init_: ', coins );
+		let filteredCoins = coins.filter( x => !filter.name || x.name.toLowerCase().indexOf( filter.name.toLowerCase() ) !== -1 );
+		this.allCoins = Observable.of( filteredCoins );
+		return filteredCoins;
 	}
 
 	ngOnInit(): void {
+		console.log( 'init_init' );
 		this.coinsService.run();
 	}
 
-	delete( coin ) {
-		this.store.dispatch( {
-			type: COIN_ACTIONS.DELETE_COIN,
-			payload: coin,
-		} );
-	}
-
-	onPageChanged( newPage: number ) {
-		const from = newPage * this.itemsPerPage;
-		const to = from + this.itemsPerPage;
-		this.coinsShown = this.coins.map( ( items ) => items.slice( from, to ) );
-		this.pageNumber = newPage;
-	}
-
-	onItemsPerPageChanged( newItemsPerPage: number ) {
-		this.itemsPerPage = newItemsPerPage;
-		const newPageNumber = this.totalPages < this.pageNumber ? this.totalPages - 1 : this.pageNumber;
-		this.onPageChanged( newPageNumber );
-	}
-
-	get totalPages(): number {
-		return Math.ceil( this.allItemsLength / this.itemsPerPage );
+	onCoinsChanged() {
+		console.log( 'onCoinsChanged', this.totalCoinsShown );
+		this.coinsShown = this.coins.map( ( items ) => items.slice( 0, this.totalCoinsShown ) );
 	}
 
 	loadMoarCoins() {
 		this.totalCoinsShown += this.coinsPerPage;
-		return this.onItemsPerPageChanged( this.totalCoinsShown );
+		console.log( 'loadmorecoins', this.totalCoinsShown );
+		this.onCoinsChanged();
+		return Observable.of( [] ); // so exhaustMap wont halt
 	}
 
 }

@@ -30,7 +30,7 @@ export class InfiniteScrollerDirective implements AfterViewInit {
 
 	@Input() immediateCallback;
 
-	@Input() scrollPercent = 70;
+	@Input() scrollPercent = 90;
 
 	constructor( private elm: ElementRef ) {
 		console.log( 'element: ', this.elm.nativeElement );
@@ -42,7 +42,7 @@ export class InfiniteScrollerDirective implements AfterViewInit {
 		this.registerScrollEvent();
 
 		this.scrollEvent$.subscribe( () => {
-			console.log( 'yo......1 ' );
+			console.log( 'yo......1 ', this.requestOnScroll$ );
 		} );
 
 		this.streamScrollEvents();
@@ -60,11 +60,12 @@ export class InfiniteScrollerDirective implements AfterViewInit {
 		this.userScrolledDown$ = this.scrollEvent$
 			.do( ( e ) => console.log( e ) )
 			.map( ( e: any ): ScrollPosition => ( {
-				scrollHeight: e.target.scrollHeight,
-				scrollTop: e.target.scrollTop,
-				clientHeight: e.target.clientHeight
+				scrollHeight: e.target.scrollHeight,   // FULLheight of element
+				scrollTop: e.target.scrollTop,         // distance from top to topmost visible, basically SCROLLED AMOUNT
+				clientHeight: e.target.clientHeight    // only VISIBLE height
 			} ) )
 			.pairwise()
+			.do( ( e ) => console.log( e ) )
 			.filter( positions => this.isUserScrollingDown( positions ) && this.isScrollExpectedPercent( positions[ 1 ] ) );
 	}
 
@@ -78,22 +79,23 @@ export class InfiniteScrollerDirective implements AfterViewInit {
 		}
 
 		this.requestOnScroll$
+			.do( () => console.log( 'requestOnScroll started' ) )
 			.exhaustMap( () => {
+				console.log( this.scrollCallback() );
 				return this.scrollCallback();
 			} )
 			.subscribe( () => {
+				console.log( 'requestOnScroll subscribe' );
 			} );
 	}
 
 	private isUserScrollingDown = ( positions ) => {
 		console.log( positions[ 0 ].scrollTop );
 		console.log( positions[ 1 ].scrollTop );
-		console.log( 'isuserscrollingdown ', positions[ 0 ].scrollTop < positions[ 1 ].scrollTop );
 		return positions[ 0 ].scrollTop < positions[ 1 ].scrollTop;
 	}
 
 	private isScrollExpectedPercent = ( position ) => {
-		console.log( 'isScrollExpectedPercent ', ( position.scrollTop + position.clientHeight ) / position.scrollHeight ) ,'.....',  ( this.scrollPercent / 100 );
 		return ( ( position.scrollTop + position.clientHeight ) / position.scrollHeight ) > ( this.scrollPercent / 100 );
 	}
 }

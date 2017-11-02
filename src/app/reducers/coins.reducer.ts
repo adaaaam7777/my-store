@@ -41,6 +41,7 @@ export function coinsReducer( state: Array<Coin> = [], action: CoinActions ): Ar
 			} );
 			return Array.prototype.concat( action.payload.ADD, state );
 		case COIN_ACTIONS.COINS_LOADED:
+			console.log( 'coins loaded...' );
 			// Return the new state with the payload as coins list
 			return action.payload.coin.concat( action.payload.coin );
 		case COIN_ACTIONS.DELETE_COIN:

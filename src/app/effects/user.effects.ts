@@ -21,6 +21,7 @@ export class UserEffects {
 
 	@Effect()
 	getUser:  Observable<Action> = this.actions.ofType( userActions.GET_USER )
+		.do( () => console.log( 'effect running!' ) )
 		.map( ( action: userActions.GetUser ) => action.payload )
 		.switchMap( payload => this.afAuth.authState )
 		.delay( 2000 ) // delay to show loading spinner, delete me!
@@ -38,6 +39,7 @@ export class UserEffects {
 
 	@Effect()
 	login:  Observable<Action> = this.actions.ofType( userActions.GOOGLE_LOGIN )
+		.do( () => console.log( 'effect running!' ) )
 		.map( ( action: userActions.GoogleLogin ) => action.payload )
 		.switchMap( payload => {
 			return Observable.fromPromise( this.googleLogin() );
@@ -57,6 +59,7 @@ export class UserEffects {
 
 	@Effect()
 	logout:  Observable<Action> = this.actions.ofType( userActions.LOGOUT )
+		.do( () => console.log( 'effect running!' ) )
 		.map( ( action: userActions.Logout ) => action.payload )
 		.switchMap( payload => {
 			return Observable.of( this.afAuth.auth.signOut() );
