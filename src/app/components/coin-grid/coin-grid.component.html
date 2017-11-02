@@ -14,7 +14,8 @@
 
 	<ng-template #itemTpl let-item let-isSelected="isSelected">
 		<div class="cc-coin-container" [attr.title]="isSelected ? 'click to close' : 'click to open' ">
-			<span style="min-width: 5%">{{ item.rank }}</span>
+			<span style="min-width: 5%">{{ item.rank }}   <img [class]="getCoinClass( item.name )"/>
+			</span>
 			<span style="min-width: 13%">{{ item.name }}</span>
 			<span style="min-width: 7%">{{ item.symbol }}</span>
 			<span style="min-width: 18%">{{ item.market_cap_usd }}</span>

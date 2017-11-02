@@ -18,6 +18,7 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
 	shownItems: any[];
 	authState: any = null;
 	msgVal = '';
+	randomChatColor;
 
 	constructor( public angularFire: AngularFireDatabase,
 				 private authService: AuthService,
@@ -25,6 +26,8 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
 	) {
 		this.items = angularFire.list( '/messages', ref => ref.limitToLast( 5 ) ).valueChanges();
 		this.items.first().subscribe( ( messages: any[] ) => this.shownItems = messages );
+
+		this.randomChatColor = '#' + Math.floor( Math.random() * 16777215 ).toString( 16 );
 	}
 
 	ngOnInit() {

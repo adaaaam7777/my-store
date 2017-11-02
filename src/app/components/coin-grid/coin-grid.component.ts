@@ -6,6 +6,7 @@ import { IFilter } from '../../reducers/filter.reducer';
 import { RealtimeCoinsService } from '../services/coin.service';
 import { AppState } from '../../reducers/index';
 import { Coin } from '../../interfaces/coin.interface';
+import { Http } from '@angular/http';
 
 @Component( {
 	selector: 'app-coin-grid',
@@ -28,7 +29,8 @@ export class CoinGridComponent implements OnInit {
 
 	constructor(
 		private store: Store<AppState>,
-		private coinsService: RealtimeCoinsService
+		private coinsService: RealtimeCoinsService,
+		private http: Http
 	) {
 		console.log( 'constructor' );
 		this.coins = Observable.combineLatest( store.select( 'coins' ).do( ( x ) => console.log( 'afdsfws', x ) ),
@@ -60,6 +62,11 @@ export class CoinGridComponent implements OnInit {
 		console.log( 'loadmorecoins', this.totalCoinsShown );
 		this.onCoinsChanged();
 		return Observable.of( [] ); // so exhaustMap wont halt
+	}
+
+	getCoinClass( name: string ): string {
+		let newName = name.toLowerCase().replace( ' ', '-' );
+		return `s-s-${ newName }`;
 	}
 
 }

@@ -50,11 +50,14 @@
 
 .cc-chat-area {
 	overflow-y: scroll;
+	overflow-x: hidden;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-    /*
-	justify-content: flex-end;
+	word-wrap: break-word;
+	padding-top: 5px;
+	/*
+    justify-content: flex-end;
     */
 }
 
@@ -77,6 +80,7 @@ input#message {
 .chat-container {
 	display:block;
 	width:100%;
+	vertical-align: middle;
 }
 .chat-container:nth-child(4) {
 	opacity: .8;
@@ -88,17 +92,13 @@ input#message {
 	opacity: .4;
 }
 
-.chat-container a {
+.chat-container strong {
+	display: inline-block;
+	float: left;
 	text-transform: uppercase;
 	font-weight:bold;
-	color:#816A98;
 	font-size:.8em;
 	letter-spacing:2px;
+	padding: 4px 5px 0 0;
 }
 
-.chat-container p {
-	background:#323035;
-	padding:1.1em;
-	color:white;
-	margin: 5px 0 10px 0;
-}

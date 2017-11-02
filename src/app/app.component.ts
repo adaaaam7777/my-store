@@ -12,7 +12,7 @@ import * as userActions from './actions/user.actions';
 	styleUrls: ['./app.component.css']
 } )
 export class AppComponent implements OnInit{
-	title = 'Crypto Chat';
+	title = 'Cryptocurrency Chat';
 
 	user$: Observable<User>;
 
