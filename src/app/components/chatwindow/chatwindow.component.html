@@ -1,9 +1,18 @@
 <div #scrollWindow class="cc-chat-area">
-	<div class="chat-container" *ngFor="let item of shownItems">
-		<strong href="#" [ngStyle]="{ 'color': randomChatColor }">{{ item.name }}</strong>
-		{{ item.message }}
-	</div>
+	<ng-container *ngIf="isLoggedIn;else pleaseLoginToChat">
+		<div class="chat-container" *ngFor="let item of shownItems">
+			<strong href="#" [ngStyle]="{ 'color': randomChatColor }">{{ item.name }}</strong>
+			{{ item.message }}
+		</div>
+	</ng-container>
+	<ng-template #pleaseLoginToChat>Please log in to chat</ng-template>
 </div>
 
-<input class="cc-send-message-area" type="text" id="message" placeholder="Type here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
+<input class="cc-send-message-area"
+	   type="text"
+	   id="message"
+	   placeholder="Type here..."
+	   [disabled]="!isLoggedIn"
+	   (keyup.enter)="chatSend($event.target.value)"
+	   [(ngModel)]="msgVal" />
 

@@ -2,17 +2,23 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
+	authStateChanged = new Subject<string>();
+
 	authState: any = null;
 
-	constructor( public afAuth: AngularFireAuth,
-				 private db: AngularFireDatabase,
+	constructor(
+		public afAuth: AngularFireAuth,
+		private db: AngularFireDatabase,
 	) {
 
 		this.afAuth.authState.subscribe( ( auth ) => {
+			console.log( 'authstate changed!', auth );
+			this.authStateChanged.next( auth ? 'login' : 'logout' );
 			this.authState = auth;
 		} );
 	}

@@ -39,7 +39,7 @@ export class UserEffects {
 
 	@Effect()
 	login:  Observable<Action> = this.actions.ofType( userActions.GOOGLE_LOGIN )
-		.do( () => console.log( 'effect running!' ) )
+		.do( () => console.log( 'google login effect running!' ) )
 		.map( ( action: userActions.GoogleLogin ) => action.payload )
 		.switchMap( payload => {
 			return Observable.fromPromise( this.googleLogin() );

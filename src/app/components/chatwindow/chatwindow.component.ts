@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AuthService } from '../services/auth.service';
 import { User } from '../../data/user/user.data';
 import { Observable } from 'rxjs';
@@ -16,16 +16,26 @@ export class ChatWindowComponent implements OnInit, AfterViewChecked {
 
 	items: Observable<any[]>;
 	shownItems: any[];
-	authState: any = null;
+	isLoggedIn: boolean;
 	msgVal = '';
 	randomChatColor;
 
-	constructor( public angularFire: AngularFireDatabase,
-				 private authService: AuthService,
-				 private elementRef: ElementRef
+	constructor(
+		public angularFire: AngularFireDatabase,
+		private authService: AuthService,
+		private elementRef: ElementRef
 	) {
-		this.items = angularFire.list( '/messages', ref => ref.limitToLast( 5 ) ).valueChanges();
-		this.items.first().subscribe( ( messages: any[] ) => this.shownItems = messages );
+		this.authService.authStateChanged.subscribe( ( auth ) => {
+			if ( auth === 'login' ) {
+				console.log( 'login!' );
+				this.isLoggedIn = true;
+				this.items = angularFire.list( '/messages', ref => ref.limitToLast( 5 ) ).valueChanges();
+				this.items.first().subscribe( ( messages: any[] ) => this.shownItems = messages );
+			} else {
+				console.log( 'logout!' );
+				this.isLoggedIn = false;
+			}
+		} );
 
 		this.randomChatColor = '#' + Math.floor( Math.random() * 16777215 ).toString( 16 );
 	}
